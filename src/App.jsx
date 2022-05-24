@@ -21,11 +21,11 @@ function App(store) {
   );
 }
 
-const mapStateToProps=(store)=>{
-  return {counter:store.counter};
-}
+const mapStateToProps = ({ counter }) => {
+  return { counter };
+};
 
 // HOC
-const withStore=connect(mapStateToProps);
+const withStore = connect(mapStateToProps);
 
 export default withStore(App);

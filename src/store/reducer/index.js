@@ -1,8 +1,8 @@
 
 const counterState={
-  counter:0,
+  score:0,
 }
 
-export const counterReducer = (oldState = {}, action) => {
+export const counterReducer = (oldState = counterState, action) => {
   return oldState;
 }
