@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { increaseReducer, initialState } from "./store/reducer";
+import { connect } from "react-redux";
 
-function App() {
-  const [counter, setCounter] = useState(initialState);
+function App(store) {
+  const [counter, setCounter] = useState({});
 
   const actionIncrement = () => {
-    setCounter(increaseReducer);
+    setCounter((s) => s + 1);
   };
   const actionDecrement = () => {
     setCounter((s) => s - 1);
@@ -21,4 +21,11 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps=(store)=>{
+  return {counter:store.counter};
+}
+
+// HOC
+const withStore=connect(mapStateToProps);
+
+export default withStore(App);
