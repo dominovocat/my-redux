@@ -2,7 +2,7 @@ import { useState } from "react";
 import { connect } from "react-redux";
 
 function App(store) {
-  const [counter, setCounter] = useState({});
+  const [counter, setCounter] = useState(0);
 
   const actionIncrement = () => {
     setCounter((s) => s + 1);

@@ -1,6 +1,7 @@
-import { legacy_createStore } from "redux";
+import { combineReducers, legacy_createStore as createStore } from "redux";
 import { counterReducer } from "./reducer";
 
-export const store = legacy_createStore({
+export const globalReducer = combineReducers({
   counter: counterReducer,
 });
+export const store = createStore(globalReducer)
