@@ -1,15 +1,15 @@
-import {useState} from 'react';
-
+import { useState } from "react";
+import { increaseReducer, initialState } from "./store/reducer";
 
 function App() {
-  const [counter,setCounter]=useState(0);
+  const [counter, setCounter] = useState(initialState);
 
-  const actionIncrement=()=>{
-    setCounter(s=>s+1);
-  }
-  const actionDecrement=()=>{
-    setCounter(s=>s-1);
-  }
+  const actionIncrement = () => {
+    setCounter(increaseReducer);
+  };
+  const actionDecrement = () => {
+    setCounter((s) => s - 1);
+  };
   return (
     <div>
       Counter:{counter}
@@ -18,7 +18,7 @@ function App() {
         <button onClick={actionDecrement}>-</button>
       </div>
     </div>
-  )
+  );
 }
 
 export default App;
