@@ -1,28 +1,40 @@
 import { connect } from "react-redux";
+import {incrementAction,decreaseAction,resetAction} from './store/actions/actionCreators';
 
-function App(props) {
+function App (props) {
+  console.log(props);
+
   const actionIncrement = () => {
-    props.dispatch({ type: "increment" });
-  };
+    props.dispatch(incrementAction());
+  }
+
   const actionDecrement = () => {
-    props.dispatch({ type: "decrement" });
-  };
+    props.dispatch(decreaseAction());
+  }
+
+  const actionReset = () => {
+    props.dispatch(resetAction());
+  }
+
   return (
     <div>
-      Counter:{props.counter.score}
+      Counter: {props.counter.score}
       <div>
-        <button onClick={actionIncrement}>+</button>
         <button onClick={actionDecrement}>-</button>
+        <button onClick={actionIncrement}>+</button>
+        <button onClick={actionReset}>Reset</button>
       </div>
     </div>
-  );
+  )
 }
 
-const mapStateToProps = ({ counter }) => {
-  return { counter };
-};
+
+const mapStateToProps = (store) => {
+  console.log(store);
+  return { counter: store.counter };
+}
 
 // HOC
-connect(mapStateToProps);
+const withStore = connect(mapStateToProps);
 
-export default connect(mapStateToProps)(App);
+export default withStore(App);
