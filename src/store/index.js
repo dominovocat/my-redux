@@ -1,11 +1,12 @@
-import { legacy_createStore as createStore, combineReducers } from 'redux';
-import { counterReducer } from './reducer';
-import { tasksReducer } from './reducer/tasks.reducer';
+import { combineReducers, legacy_createStore as createStore } from "redux";
+import { counterReducer } from "./reducer/index.js";
+import { taskReducer } from "./reducer/tasks.reducer.js";
+import { userReducer } from "./reducer/user.reducer.js";
 
-// последовательно каждый редюсер
 export const globalReducer = combineReducers({
-    counter: counterReducer,
-    tasks: tasksReducer, // new reducer
+  counter: counterReducer,
+  taskList: taskReducer,
+  userData: userReducer,
 });
 
 export const store = createStore(globalReducer);

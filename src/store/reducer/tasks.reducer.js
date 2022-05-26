@@ -1,16 +1,19 @@
 import actionTypes from "../actions/actionTypes";
 
-const tasksState = {
+const taskState = {
   list: [],
 };
 
-export const tasksReducer = (oldState = tasksState, action) => {
-  if (action.type === actionTypes.ADD_TASK) {
-    return {
-      ...oldState,
-      list: [
-        /* add new task from action.payload */
-      ],
-    };
+export const taskReducer = (oldState = taskState, action) => {
+  switch (action.type) {
+    case actionTypes.ADDTASK:
+      return { ...oldState, list: [...oldState.list, action.payload] };
+    case actionTypes.REMOVE_TASK:
+      return {
+        ...oldState,
+        list: oldState.list.filter((item) => item.id !== action.payload.id),
+      };
+    default:
+      return oldState;
   }
 };
