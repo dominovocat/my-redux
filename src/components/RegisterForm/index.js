@@ -5,16 +5,16 @@ import { sendData } from '../../store/actions/actionCreators';
 export const RegisterForm = (props) => {
   const [password, setPassword] = useState("");
   const [login, setLogin] = useState("");
-  const [validation, setValidation] = useState(false);
+  const [valid, setValid] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const send = sendData({ password: password, login: login });
     props.dispatch(send);
-    setValidation(true);
+    setValid(true);
   };
 
-  return ! validation ? (
+  return ! valid ? (
     <form onSubmit={handleSubmit}>
       <input
         value={login}

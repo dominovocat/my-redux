@@ -5,7 +5,7 @@ import Tasks from './components/Tasks';
 function App(props) {
   return (
     <div className="App">
-      <Tasks/>
+      {/* <Tasks/> */}
       <RegisterForm />
     </div>
   );
